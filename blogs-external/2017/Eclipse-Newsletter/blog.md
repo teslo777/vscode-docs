@@ -82,6 +82,8 @@ VS Code starts multiple language server instances during a programming session o
 
 Since not every language server might be able to implement all language features and not all clients might expose the same set of features either the language server protocol uses the concept of capabilities to announce the client's and server's feature set. So a server can for example announce that it can handle the 'textDocument/definition' request but it might not handle the 'workspace/symbol' request. Clients for example can flag that they are able to provide notifications before a document is saved so that a server can compute textual edits to format the text document or to auto fix problems in it on save.
 
+How a language server is integrated into a tool depends on the tool itself. Some tools integrate language servers generically by having an extension that can start and talk to any kind of language server. Others, like VS Code, create a separate extension per language server. The reason for VS Code doing so is that beside language smartness a language extension contributes a [TextMate](http://macromates.com/) grammar for syntax coloring. We choose to use TextMate for syntax coloring in VS Code due to its wide apotion in programming language editors and the quality of the existing grammars.
+
 ## How it evolved
 
 @erich, @sean can you write something about how RedHat and CodeEny approached used 
@@ -98,4 +100,4 @@ The VS Code team also maintains an [npm module](https://www.npmjs.com/package/vs
 
 ## Summary
 
-Still to be written. Something like: the protocol was originally VS Code specific. Great to see how the OS community picked it up, improved it and adopted it in other clients and developed a server ecosystem around it.
+The initial motivation for us to do the language server protocol was to ease the writing of linters and language server for VS Code. It was great to see how the open source community picked it up, gave feedback, improved it and most importantly adopted it for other clients and developed a language server ecosystem around it. We would never have been able to do this by ourselves.
