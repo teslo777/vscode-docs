@@ -5,11 +5,21 @@ Authors:
 [Erich Gamma](https://github.com/egamma),
 [Sean McBreen](https://github.com/seanmcbreen)
 
-## How it started
+## What is the Language Server Protocol [LSP]
 
-The protocol was not created out of thin air, but it builds up on work and experiences from many others. Editors like [Vim](http://www.vim.org/) or [Emacs](https://www.gnu.org/software/emacs/) have used language servers or demons to provide semantic auto complete support since a while.
+The Language Server Protocol [LSP] was the product of observing how tools and langues were integrated together to produce insights for the developer.  This is not a new idea and Editors like [Vim](http://www.vim.org/) or [Emacs](https://www.gnu.org/software/emacs/) have used language servers or demons to provide semantic auto complete support for some time, the goal of the LSP is to simplify these sorts of integrations and provide a rich framework for language features to be exposed to a variety of tools.
 
-This concept was picked up by [OmniSharp](http://www.omnisharp.net/). OmniSharp provides auto complete and other rich editing features for C#. Initially OmniSharp used the http protocol with a JSON payload. OmniSharp has been integrated into several [editors](http://www.omnisharp.net/#integrations). One of them being VS Code.
+For instance in Figure 1 below you can a TypeScript file loaded in [Visual Studio Code](https://code.visualstudio.com) within the editor you can see some additional language features - specifically references are expressed as [Code Lenses](https://code.visualstudio.com/docs/languages/typescript#_references-codelens) which you can  ['peek'](https://code.visualstudio.com/docs/editor/editingevolved#_peek) and navigate to.
+
+
+![TypeScript in Visual Studio Code](typescript_ts-references-code-lens-peek.png)
+**Figure 1:** TypeScript in Visual Studio Code
+
+Where the protocol really helps is in facilitating rich language feature's to be integrated with minimal fuss and ceremony into a development tool while preserving th backing implementation of the 'language server' for instance a language server back-end could be written in C++, Python or Java and the LSP allows it to be easily integrated into a variety of tools.
+
+
+## How Work on the LSP Started
+The LSP has evolved over time and today we are at [Version 3.0](https://github.com/Microsoft/language-server-protocol/blob/master/protocol.md).  Our first efforts really kicked off when the concept of rich language competitions was picked up by [OmniSharp](http://www.omnisharp.net/). OmniSharp provides auto complete and other rich editing features for C#. Initially OmniSharp used the http protocol with a JSON payload. OmniSharp has been integrated into several [editors](http://www.omnisharp.net/#integrations). One of them being VS Code.
 
 Around the same time Microsoft started the work on a TypeScript language server, with the idea to support TypeScript in editors like [Emacs](https://www.gnu.org/software/emacs/) and [Sublime](https://www.sublimetext.com/). An editor communicates through stdin/stdout with the [TypeScript server](https://github.com/Microsoft/TypeScript/tree/master/src/server) process and uses a JSON payload inspired by the [V8 debugger protocol](https://github.com/v8/v8/wiki/Debugging-Protocol) for requests and responses. This TypeScript server has been integrated into the [TypeScript Sublime plugin](https://github.com/Microsoft/TypeScript-Sublime-Plugin). VS Code also uses this language server for its rich TypeScript editing experience.
 
@@ -17,11 +27,24 @@ After having consumed two different language servers in VS Code, we started to e
 
 We started with the language protocol used by the TypeScript server, made it more general, and more language neutral. In a next step we enriched the protocol with more language features using the [VS Code language API](https://code.visualstudio.com/docs/extensionAPI/vscode-api#_languages)for inspiration. We picked [JSON-RPC](http://www.jsonrpc.org/) for remote invocation. It is simple and there are support libraries for many programming languages.
 
+We started with the language protocol used by the TypeScript server, made it more general, and more language neutral. In a next step we enriched the protocol with more language features using the [VS Code language API](https://code.visualstudio.com/docs/extensionAPI/vscode-api#_languages) for inspiration. 
+
+
+
+The protocol itself is backed with [JSON-RPC](http://www.jsonrpc.org/) for remote invocation. It is simple and there are support libraries for many programming languages.
+
+The protocol was not created out of thin air, but it builds up on work and experiences from many others. 
+This concept was picked up by [OmniSharp](http://www.omnisharp.net/). OmniSharp provides auto complete and other rich editing features for C#. Initially OmniSharp used the http protocol with a JSON payload. OmniSharp has been integrated into several [editors](http://www.omnisharp.net/#integrations). One of them being VS Code.
+
+Around the same time Microsoft started the work on a TypeScript language server, with the idea to support TypeScript in editors like [Emacs](https://www.gnu.org/software/emacs/) and [Sublime](https://www.sublimetext.com/). An editor communicates through stdin/stdout with the [TypeScript server](https://github.com/Microsoft/TypeScript/tree/master/src/server) process and uses a JSON payload inspired by the [V8 debugger protocol](https://github.com/v8/v8/wiki/Debugging-Protocol) for requests and responses. This TypeScript server has been integrated into the [TypeScript Sublime plugin](https://github.com/Microsoft/TypeScript-Sublime-Plugin). VS Code also uses this language server for its rich TypeScript editing experience.
+
+After having consumed two different language servers in VS Code, we started to explore a common language server protocol for editors and IDEs. A common protocol enables a language provider to provide a language server that be consumed by different IDEs. A languge server consumer only has to implement the protocol once. This results in a win-win situation for both the language provider and the language consumer.
+
 We have started the dogfooding of the protocol for what we called linter language servers. A linter language server responds to requests to lint a file and responds with the set of detected warnings and errors. We wanted to lint a file as the user edits a document. This means VS Code will emit many linting requests during an editor session. Therefore we wanted to keep a server up and running so that we do not need to start a new linting process for each user edit. We have implemented several linter servers, for example VS Code's [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) or [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) extension. These two linter servers are both implemented in JavaScript and run on nodejs. They share a library that implements the client and server part of the protocol.
 
 Soon after the [PowerShell](https://msdn.microsoft.com/en-us/powershell/mt173057.aspx) team was interested in adding PowerShell support for VS Code. They had already extracted their language support into a separate server implemented in C#. We then collaborated with them to evolve this PowerShell language server into a server that supports the common language protocol. During this effort we completed the client side consumption of the language server protocol in VS Code. The result is the first complete common language server protocol implementation available as the now popular [PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).
 
-## How it works
+## How the LSP Works
 
 A language server runs in its own process and tools like VS Code communicate with the server using the language protocol over JSON-RPC. The actual transport channel can either be `stdio`, `sockets`, `named pipes` or `node ipc` if both the client and server is written in node. Below is an example for how a tool and a language server communicate during a routine editing session: 
 
@@ -89,7 +112,7 @@ The actual integration of a language server into a particular tool is not define
 
 To simplify the implementation of language servers and clients we  maintain an [npm module](https://www.npmjs.com/package/vscode-languageclient) to ease the integration of a language server into a VS Code extension and another [npm module](https://www.npmjs.com/package/vscode-languageserver) to write a language server using node.
 
-## How it evolved
+## Broadening the Adoption of the LSP
 
 In spring 2016 we started to discuss the language server protocol with teams from RedHad and CodeEnvy, which resulted into a common [announcement](https://code.visualstudio.com/blogs/2016/06/27/common-language-protocol) of the collaboration. In preparation for this, we moved the specification of the protocol to a public [GitHub repository](https://github.com/Microsoft/language-server-protocol). Together with the language server protocol we made the language servers for JSON, HTML, CSS/LESS/SASS used by VS Code available as Open Source. 
 
@@ -104,6 +127,9 @@ Since then language servers for many programming languages have emerged. An exte
 At the same time tools have started to adopt language servers. The protocol is now supported by [VS Code](https://code.visualstudio.com/), [MS Monaco Editor](https://www.npmjs.com/package/monaco-languageclient), [Eclipse Che](https://github.com/eclipse/che/issues/1287), [Eclipse IDE](https://projects.eclipse.org/projects/technology.lsp4e), [Emacs]((https://www.gnu.org/software/emacs/)), [GNOME Builder](https://git.gnome.org/browse/gnome-builder/tree/libide/langserv) and [Vim](https://github.com/autozimu/LanguageClient-neovim).  
 
 The community provides us with great feedback about the language server protocol and even better we have received many pull requests that helped us to clarify the specification.
+
+## Where Next for the LSP & Contributing
+Version 3.0 of the protocol has been around for some time and we have a backlog of [requests for the 4.0 version of the protocol](https://github.com/Microsoft/language-server-protocol/issues?q=is%3Aopen+is%3Aissue+milestone%3A4.0).  This is where the community can collectively come together and help shape what's next by weighing in of the scenarios that are most important ot you and of course adding additional [reference implementations](https://github.com/Microsoft/language-server-protocol/wiki/Protocol-Implementations).
 
 ## Summary
 
