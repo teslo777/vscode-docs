@@ -7,14 +7,14 @@ Authors:
 
 ## What is the Language Server Protocol (LSP)
 
-The Language Server Protocol (LSP) was the product of observing how tools and languages could be integrated together to produce rich editing experiences for the developer.  It was not a new idea and editors like [Vim](http://www.vim.org/) or [Emacs](https://www.gnu.org/software/emacs/) have used language servers or demons to provide semantic auto-completion support for some time. The goal of the LSP was to simplify these sorts of integrations and provide a useful framework for exposing language features to a variety of tools.
+The Language Server Protocol (LSP) was the product of observing how tools and languages could be integrated together to produce rich editing experiences for the developer.  It's not a new or novel idea, editors like [Vim](http://www.vim.org/) and [Emacs](https://www.gnu.org/software/emacs/) have used language servers or demons to provide semantic auto-completion support for some time. The goal of the LSP was to simplify these sorts of integrations and provide a useful framework for exposing language features to a variety of tools.
 
 For instance, in Figure 1 below, you can see a TypeScript file loaded in [Visual Studio Code](https://code.visualstudio.com). Within the editor, you can see some rich language features - specifically references are expressed as [Code Lenses](https://code.visualstudio.com/docs/languages/typescript#_references-codelens) which you can  ['peek'](https://code.visualstudio.com/docs/editor/editingevolved#_peek) and navigate to.
 
 ![TypeScript in Visual Studio Code](typescript_ts-references-code-lens-peek.png)
 **Figure 1:** TypeScript in Visual Studio Code
 
-Having a protocol helps the integration of language features with minimal fuss into a development tool while preserving the backing implementation of the 'language server'. For example, a language server back-end could be written in C++, Python or Java and the LSP allows it to be easily integrated into a variety of tools.
+Having a protocol helps the integration of language features with minimal fuss into a development tool while preserving the backing implementation of the 'language server'. For example, a language server back-end could be written in C++, Python or Java and the LSP allows it to be easily integrated into a variety of tools.  The protocol works at a common level of abstraction that allows a tool to offer rich language services without needing to fully understand the nuances specific to the underlying 'model' of the language.
 
 ## How Work on the LSP Started
 
@@ -32,7 +32,7 @@ Soon after, the [PowerShell](https://msdn.microsoft.com/en-us/powershell/mt17305
 
 ## How the LSP Works
 
-A language server runs in its own process and tools like VS Code communicate with the server using the language protocol over JSON-RPC. The actual transport channel can either be `stdio`, `sockets`, `named pipes`, or `node ipc` if both the client and server is written in Node.js.
+A language server runs in its own process and tools like VS Code communicate with the server using the language protocol over JSON-RPC. One of the really nice side effects of Language Servers operating in a dedicated process is that many of the normal performance related issues that come into play in a single process model are avoided. The actual transport channel can either be `stdio`, `sockets`, `named pipes`, or `node ipc` if both the client and server is written in Node.js.
 
 Below is an example for how a tool and a language server communicate during a routine editing session:
 
@@ -107,7 +107,7 @@ To simplify the implementation of language servers and clients, we maintain an [
 
 In spring 2016, we started to discuss the language server protocol with teams from RedHat and CodeEnvy, which resulted in a common [announcement](https://code.visualstudio.com/blogs/2016/06/27/common-language-protocol) of the collaboration. In preparation for this, we moved the specification of the protocol to a public [GitHub repository](https://github.com/Microsoft/language-server-protocol). Along with the language server protocol, we also made the language servers for JSON, HTML, CSS/LESS/SASS used by VS Code available as Open Source.
 
-To deepen the collaboration, Microsoft hosted a Hackathon at its Zurich lab in July 2016. The goal was to collaborate on a Java language server that can be used in EclipseChe, Orion and VS Code. We made great progress during this week and it was good to see our old friends from IBM again.
+To deepen the collaboration, Microsoft hosted a Hackathon at its Zurich development center in July 2016. The goal was to collaborate on a Java language server that can be used in EclipseChe, Orion and VS Code. We made great progress during this week and it was good to see our old friends from IBM again.
 
 ![Java language server hackathon](java-server-hackathon.png)
 
