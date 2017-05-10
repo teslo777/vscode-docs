@@ -22,7 +22,7 @@ We started dogfooding the protocol with what we called `linter` language servers
 
 Soon after, the [PowerShell](https://msdn.microsoft.com/en-us/powershell/mt173057.aspx) team became interested in adding PowerShell support for VS Code. They had already extracted their language support into a separate server implemented in C#. We then collaborated with them to evolve this PowerShell language server into a server that supports the common language protocol. During this effort, we completed the client side consumption of the language server protocol in VS Code. The result was the first complete common language server protocol implementation available as the now popular [PowerShell extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell).
 
-## How the LSP Works
+## How the LSP Works 
 
 A language server runs in its own process and tools like VS Code communicate with the server using the language protocol over JSON-RPC. Another nice side effect of the language server operating in a dedicated process is that performance issues related to a single process model are avoided. The actual transport channel can either be `stdio`, `sockets`, `named pipes`, or `node ipc` if both the client and server is written in Node.js.
 
