@@ -56,10 +56,6 @@ Here are two File Icon themes I really like:
 
 Do you use snippets while writing code? Many snippets come built into VS Code and are shown in the IntelliSense suggest window while you type.
 
-<video id="snippets-showcase" src="https://az754404.vo.msecnd.net/public/snippets_showcase.mp4" placeholder="/images/userdefinedsnippets_snippets_placeholder.png" autoplay loop controls muted>
-    Sorry you're browser doesn't support HTML 5 video.
-</video>
-
 When you start using a new library or framework, check the Marketplace to see if there is a snippet pack for it. There are snippet packs for many popular JavaScript frameworks.
 
 - [Bootstrap 3](https://marketplace.visualstudio.com/items?itemName=wcwhitehead.bootstrap-3-snippets) from [William Whitehead](https://marketplace.visualstudio.com/search?term=publisher%3A%22William%20Whitehead%22&target=VSCode&sortBy=Relevance)
