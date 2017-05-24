@@ -17,7 +17,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 <ul class="video-list">
 	<li class="video">
 		<a href="/docs/introvideos/quicktour">
-			<img src="https://img.youtube.com/vi/pI1skOo2yjk/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/pI1skOo2yjk/mqdefault.jpg" alt="Quick Tour Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">Quick Tour using JavaScript</h2>
 				<p class="description">Check out the key features of VS Code in a quick overview.</p>
@@ -27,7 +27,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 	</li>
 	<li class="video">
 		<a href="/docs/introvideos/basics">
-			<img src="https://img.youtube.com/vi/SYRwSyjD8oI/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/SYRwSyjD8oI/mqdefault.jpg" alt="Setup and Basics Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">Setup and Basics</h2>
 				<p class="description">Install and learn the basics of your new editor.</p>
@@ -37,7 +37,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 	</li>
 	<li class="video">
 		<a href="/docs/introvideos/configure">
-			<img src="https://img.youtube.com/vi/4wVF4w_53hs/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/4wVF4w_53hs/mqdefault.jpg" alt="Customize Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">Customize</h2>
 				<p class="description">Personalize VS Code through settings, themes, keybindings.</p>
@@ -47,7 +47,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 	</li>
 	<li class="video">
 		<a href="/docs/introvideos/extend">
-			<img src="https://img.youtube.com/vi/Fed01v3yYNE/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/Fed01v3yYNE/mqdefault.jpg" alt="Extensions Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">Extensions</h2>
 				<p class="description">Extend VS Code with extensions.</p>
@@ -57,7 +57,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 	</li>
 	<li class="video">
 		<a href="/docs/introvideos/codeediting">
-			<img src="https://img.youtube.com/vi/rsatrlBEFFA/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/rsatrlBEFFA/mqdefault.jpg" alt="Code Editing Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">Code Editing</h2>
 				<p class="description">Take code editing to the next level.</p>
@@ -67,7 +67,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 	</li>
 	<li class="video">
 		<a href="/docs/introvideos/intellisense">
-			<img src="https://img.youtube.com/vi/lSPHucggmLo/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/lSPHucggmLo/mqdefault.jpg" alt="IntelliSense Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">IntelliSense</h2>
 				<p class="description">Receive intelligent code completions.</p>
@@ -77,7 +77,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 	</li>
 	<li class="video">
 		<a href="/docs/introvideos/debugging">
-			<img src="https://img.youtube.com/vi/6cOsxaNC06c/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/6cOsxaNC06c/mqdefault.jpg" alt="Debugging Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">Debugging</h2>
 				<p class="description">Debug a simple Node.js application.</p>
@@ -87,7 +87,7 @@ Start your journey with Visual Studio Code with this set of introductory videos.
 	</li>
 	<li class="video">
 		<a href="/docs/introvideos/versioncontrol">
-			<img src="https://img.youtube.com/vi/AKNYgP0yEOY/mqdefault.jpg" alt aria-hidden="true" class="thumb"/>
+			<img src="https://img.youtube.com/vi/AKNYgP0yEOY/mqdefault.jpg" alt="Version Control Video" aria-hidden="true" class="thumb"/>
 			<div class="info">
 				<h2 class="title faux-h3">Version Control</h2>
 				<p class="description">Learn how to use Git version control in VS Code.</p>
