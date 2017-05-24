@@ -2,6 +2,7 @@
 Order: 1
 Area: languages
 TOCTitle: Overview
+ScreenReaderTitle: Languages Overview
 ContentId: AC888642-FBE5-43E5-9DC2-47B197717940
 PageTitle: Language Support in Visual Studio Code
 DateApproved: 5/4/2017

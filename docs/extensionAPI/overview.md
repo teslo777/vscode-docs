@@ -2,6 +2,7 @@
 Order: 1
 Area: extensionapi
 TOCTitle: Overview
+ScreenReaderTitle: Extensibility Reference Overview
 ContentId: C99AC3B3-47BC-41E3-8C7B-6F24364C20D1
 PageTitle: Visual Studio Code Extensibility Reference
 DateApproved: 5/4/2017

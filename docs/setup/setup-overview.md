@@ -2,6 +2,7 @@
 Order: 1
 Area: setup
 TOCTitle: Overview
+ScreenReaderTitle: Setup Overview
 ContentId: FC5262F3-D91D-4665-A5D2-BCBCCF66E53A
 PageTitle: Setup VS Code
 DateApproved: 5/4/2017

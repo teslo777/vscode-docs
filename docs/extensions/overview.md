@@ -2,6 +2,7 @@
 Order: 1
 Area: extensions
 TOCTitle: Overview
+ScreenReaderTitle: Extension Authoring Overview
 ContentId: AD26EFB1-FFC6-4284-BAB8-F3BCB8294728
 PageTitle: Building extensions for VS Code
 DateApproved: 5/4/2017
