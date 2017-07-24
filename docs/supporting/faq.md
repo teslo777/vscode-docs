@@ -58,6 +58,10 @@ You can find the VS Code licenses, third party notices and [Chromium](https://ww
 
 To learn why Visual Studio Code, the product, has a different license than vscode, the open source [GitHub repository](https://github.com/microsoft/vscode), see [issue #60](https://github.com/Microsoft/vscode/issues/60#issuecomment-161792005) for a detailed explanation.
 
+### Why can't I access the Visual Studio Marketplace when using the OSS build from the vscode repository?
+
+Visual Studio Code is the Microsoft branded product built on top of the vscode OSS Github repository (see [Microsoft/vscode#60](https://github.com/Microsoft/vscode/issues/60#issuecomment-161792005)). When we build VS Code, we include additional functionality and services on top of what is in the OSS repository (e.g. access to Microsoft Support). The [Marketplace](https://marketplace.visualstudio.com/vscode) is a feature of the Visual Studio family of products, therefore we provide access in the Visual Studio Code product, but not in the OSS repository builds.
+
 ## How can I test prerelease versions of VS Code?
 
 Want an early peek at new VS Code features?  You can try prerelease versions of VS Code by installing the "Insiders" build.  The Insiders build installs side by side to your stable VS Code install and has isolated settings, configurations and extensions.  The Insiders build is updated nightly so you'll get the latest bug fixes and feature updates from the day before.
